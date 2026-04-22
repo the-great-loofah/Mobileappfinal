@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -55,37 +57,38 @@ fun AppUi()
     Scaffold(
         topBar = {
             TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = Purple40, titleContentColor = Black),
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primary, titleContentColor = Black),
                 title = { Text("Grocery app") }
             )
         }
     )
     { customPadding -> Row(modifier = Modifier.fillMaxWidth().padding(customPadding))
         {
-        Row(modifier = Modifier.fillMaxWidth())
-        {
-            Column(
-                modifier = Modifier.weight(1f).fillMaxHeight().verticalScroll(rememberScrollState()).background(color = OrangeL)
-
-            ) //to make it so user can scroll
+        Card(modifier = Modifier){
+            Row(modifier = Modifier.fillMaxWidth())
             {
-                var categoriesList: MutableList<GroceryCategory> = mutableListOf()
-                categoriesList.add(FruitCategory())
-                categoriesList.add(DairyCategory())
-                categoriesList.add(MeatCategory())
-                categoriesList.add(VeggieCategory())
+                Column(
+                    modifier = Modifier.weight(1f).fillMaxHeight().verticalScroll(rememberScrollState()).background(color = MaterialTheme.colorScheme.onErrorContainer)
 
-                categoriesList.forEach { item -> item.Display() }
-            }
-            Column(modifier = Modifier.weight(1f).fillMaxHeight()) //Ran out of time for this
-            {
-                Row(modifier = Modifier.fillMaxWidth().weight(1f))
+                ) //to make it so user can scroll
                 {
-                    OhAndCategory().Display()
+                    val categoriesList: MutableList<GroceryCategory> = mutableListOf()
+                    categoriesList.add(FruitCategory())
+                    categoriesList.add(DairyCategory())
+                    categoriesList.add(MeatCategory())
+                    categoriesList.add(VeggieCategory())
+
+                    categoriesList.forEach { item -> item.Display() }
+                }
+                Column(modifier = Modifier.weight(1f).fillMaxHeight()) //Ran out of time for this
+                {
+                    Row(modifier = Modifier.fillMaxWidth().weight(1f))
+                    {
+                        OhAndCategory().Display()
+                    }
                 }
             }
         }
-
         }
     }
 }
