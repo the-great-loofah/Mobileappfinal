@@ -27,7 +27,7 @@ class DairyCategory: GroceryCategory("Dairy", dairyList)
     public override fun Display()
     {
         Text(text = categoryName,
-            style = Typography.headlineLarge,
+            style = Typography.labelSmall,
             modifier = Modifier.padding(bottom = dimensionResource(R.dimen.generalpadding), start = dimensionResource(R.dimen.generalpadding)))
         for(items in dairyList) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically)

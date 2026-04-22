@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -27,12 +28,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.example.grocerylist.categorydata.GroceryCategory
 import com.example.groceryrebuildfinal.R
 import com.example.groceryrebuildfinal.ui.theme.OrangeL
 import com.example.groceryrebuildfinal.ui.theme.Typography
 
-class OhAndCategory: GroceryCategory("Oh And...", ohAnd)
+class OhAndCategory: GroceryCategory("Oh, and...", ohAnd)
 {
 
     @Composable
@@ -46,7 +48,7 @@ class OhAndCategory: GroceryCategory("Oh And...", ohAnd)
             Row()
             {
                 Text(text = categoryName,
-                    style = Typography.headlineLarge,
+                    style = Typography.labelSmall,
                     modifier = Modifier.padding(bottom = dimensionResource(R.dimen.generalpadding), start = dimensionResource(R.dimen.generalpadding)))
             }
 
@@ -61,8 +63,8 @@ class OhAndCategory: GroceryCategory("Oh And...", ohAnd)
 
             }
             Row(modifier = Modifier.fillMaxWidth())
-            {
-                TextField(value = input, onValueChange = {input = it}, modifier = Modifier.weight(1f).background(color = Color.Black))
+            {   //Why wont the text field dimensions change?? :(
+                OutlinedTextField(value = input, onValueChange = {input = it}, modifier = Modifier.width(100.dp).weight(1f))
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center)
             {

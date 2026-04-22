@@ -26,7 +26,7 @@ class MeatCategory: GroceryCategory("Meat", meatList)
     public override fun Display()
     {
         Text(text = categoryName,
-            style = Typography.headlineMedium,
+            style = Typography.labelSmall,
             modifier = Modifier.padding(bottom = dimensionResource(R.dimen.generalpadding), start = dimensionResource(R.dimen.generalpadding)))
         for(items in meatList) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically)

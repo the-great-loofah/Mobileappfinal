@@ -26,7 +26,7 @@ class FruitCategory: GroceryCategory("Fruit", fruitsList)
     public override fun Display()
     {
             Text(text = categoryName,
-                style = Typography.headlineMedium,
+                style = Typography.labelSmall,
                 modifier = Modifier.padding(bottom = dimensionResource(R.dimen.generalpadding), start = dimensionResource(R.dimen.generalpadding)))
             for(items in fruitsList) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically)
