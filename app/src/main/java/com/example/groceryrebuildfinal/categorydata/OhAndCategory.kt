@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -28,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.grocerylist.categorydata.GroceryCategory
 import com.example.groceryrebuildfinal.R
@@ -49,7 +51,7 @@ class OhAndCategory: GroceryCategory("Oh, and...", ohAnd)
             {
                 Text(text = categoryName,
                     style = Typography.labelSmall,
-                    modifier = Modifier.padding(bottom = dimensionResource(R.dimen.generalpadding), start = dimensionResource(R.dimen.generalpadding)))
+                    modifier = Modifier.padding(bottom = dimensionResource(R.dimen.generalpadding), start = dimensionResource(R.dimen.generalpadding)), textDecoration = TextDecoration.Underline, color = MaterialTheme.colorScheme.scrim)
             }
 
             for(items in ohAnd) {
@@ -70,7 +72,7 @@ class OhAndCategory: GroceryCategory("Oh, and...", ohAnd)
             {
                 TextButton(onClick = {ohAnd.add(input); reset = !reset}, colors = ButtonDefaults.textButtonColors(containerColor = OrangeL))
                 {
-                    Text(text = stringResource(R.string.oh))
+                    Text(text = stringResource(R.string.oh), color = MaterialTheme.colorScheme.scrim)
                 }
             }
         }
