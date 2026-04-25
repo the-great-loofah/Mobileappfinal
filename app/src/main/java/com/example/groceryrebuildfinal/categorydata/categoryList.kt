@@ -1,6 +1,6 @@
 package com.example.groceryrebuildfinal.categorydata
 
-import android.R
+//import android.R
 
 //I understand this is bad :(
 
