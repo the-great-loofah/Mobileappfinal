@@ -62,7 +62,7 @@ fun AppUi()
 {
 
     var input by remember { mutableStateOf("") }
-    var click by remember { mutableStateOf("") }
+
     //val items by view.Repo.GetAllStream().collectAsState(initial = emptyList())
 
     //var item by remember { mutableStateOf("") } //I feel like im defining these variables alot but i dont know where they are
