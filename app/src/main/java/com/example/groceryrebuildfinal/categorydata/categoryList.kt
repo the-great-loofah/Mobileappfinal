@@ -5,6 +5,7 @@ import android.R
 //I understand this is bad :(
 
 //Collection of category titles and some sample items in them
+//Lists
 
 val fruitsList: List<String> = listOf("Apples", "Oranges", "StrawBerry", "Grapes", "Pineapple") //Might add this to the string.xml but the sheer quantity of items makes it excessive despite the efficiency gains
 
