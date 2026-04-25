@@ -1,6 +1,9 @@
 package com.example.groceryrebuildfinal.ui.theme.app
 
+import android.R.id.input
 import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,12 +13,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -24,6 +30,8 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -31,6 +39,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.grocerylist.categorydata.DairyCategory
 import com.example.grocerylist.categorydata.FruitCategory
 import com.example.grocerylist.categorydata.GroceryCategory
@@ -38,6 +48,7 @@ import com.example.grocerylist.categorydata.MeatCategory
 import com.example.grocerylist.categorydata.VeggieCategory
 import com.example.groceryrebuildfinal.R
 import com.example.groceryrebuildfinal.categorydata.OhAndCategory
+import com.example.groceryrebuildfinal.categorydata.ohAnd
 import com.example.groceryrebuildfinal.repository.Repository
 import com.example.groceryrebuildfinal.ui.theme.Black
 import com.example.groceryrebuildfinal.ui.theme.OrangeL
@@ -49,6 +60,9 @@ import com.example.groceryrebuildfinal.ui.theme.Purple40
 @Composable
 fun AppUi()
 {
+
+    var input by remember { mutableStateOf("") }
+    var click by remember { mutableStateOf("") }
     //val items by view.Repo.GetAllStream().collectAsState(initial = emptyList())
 
     //var item by remember { mutableStateOf("") } //I feel like im defining these variables alot but i dont know where they are
@@ -68,7 +82,7 @@ fun AppUi()
             Row(modifier = Modifier.fillMaxWidth())
             {
                 Column(
-                    modifier = Modifier.weight(1f).fillMaxHeight().verticalScroll(rememberScrollState()).background(color = MaterialTheme.colorScheme.onErrorContainer)
+                    modifier = Modifier.weight(1f).fillMaxHeight().verticalScroll(rememberScrollState()).background(color = MaterialTheme.colorScheme.errorContainer)
 
                 ) //to make it so user can scroll
                 {
@@ -85,6 +99,21 @@ fun AppUi()
                     Row(modifier = Modifier.fillMaxWidth().weight(1f))
                     {
                         OhAndCategory().Display()
+                    }
+
+                    Row(modifier = Modifier.fillMaxWidth())
+                    {   //Why wont the text field dimensions change?? :(
+                        OutlinedTextField(value = input, onValueChange = {input = it}, modifier = Modifier.width(100.dp).weight(1f))
+                    }
+
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center)
+                    {
+
+                        TextButton(onClick = {ohAnd.add(input); input = ""}, colors = ButtonDefaults.textButtonColors(containerColor = OrangeL))
+                        {
+
+                            Text(text = stringResource(R.string.oh), color = MaterialTheme.colorScheme.scrim)
+                        }
                     }
                 }
             }
@@ -103,3 +132,9 @@ fun AppUi()
 //    }
 //}
 
+@Preview
+@Composable
+fun AppUiprev()
+{
+    AppUi()
+}

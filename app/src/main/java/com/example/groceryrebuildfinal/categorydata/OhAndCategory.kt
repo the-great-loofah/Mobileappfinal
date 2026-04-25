@@ -44,13 +44,14 @@ class OhAndCategory: GroceryCategory("Oh, and...", ohAnd)
     public override fun Display()
     {
         var input by remember {mutableStateOf("")}
-        var reset by remember { mutableStateOf(false) }
+        //var reset by remember { mutableStateOf(false) }
         Column(modifier = Modifier.fillMaxHeight())
         {
             Row()
             {
                 Text(text = categoryName,
                     style = Typography.labelSmall,
+
                     modifier = Modifier.padding(bottom = dimensionResource(R.dimen.generalpadding), start = dimensionResource(R.dimen.generalpadding)), textDecoration = TextDecoration.Underline, color = MaterialTheme.colorScheme.scrim)
             }
 
@@ -64,17 +65,17 @@ class OhAndCategory: GroceryCategory("Oh, and...", ohAnd)
                 }
 
             }
-            Row(modifier = Modifier.fillMaxWidth())
-            {   //Why wont the text field dimensions change?? :(
-                OutlinedTextField(value = input, onValueChange = {input = it}, modifier = Modifier.width(100.dp).weight(1f))
-            }
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center)
-            {
-                TextButton(onClick = {ohAnd.add(input); reset = !reset}, colors = ButtonDefaults.textButtonColors(containerColor = OrangeL))
-                {
-                    Text(text = stringResource(R.string.oh), color = MaterialTheme.colorScheme.scrim)
-                }
-            }
+//            Row(modifier = Modifier.fillMaxWidth())
+//            {   //Why wont the text field dimensions change?? :(
+//                OutlinedTextField(value = input, onValueChange = {input = it}, modifier = Modifier.width(100.dp).weight(1f))
+//            }
+//            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center)
+//            {
+//                TextButton(onClick = {ohAnd.add(input); reset = !reset}, colors = ButtonDefaults.textButtonColors(containerColor = OrangeL))
+//                {
+//                    Text(text = stringResource(R.string.oh), color = MaterialTheme.colorScheme.scrim)
+//                }
+//            }
         }
     }
 }
